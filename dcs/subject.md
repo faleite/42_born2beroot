@@ -1,5 +1,8 @@
 # Subject
 
+## Links
+- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md)
+
 ## Guidelines
 - O uso do VirtualBox (ou UTM se você não puder usar o VirtualBox) é obrigatório.
 - Você só precisa entregar um arquivo signature.txt na raiz do seu repositório.
