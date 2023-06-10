@@ -28,7 +28,7 @@ está um exemplo do particionamento esperado:
 
 - Um  serviço  SSH  será  executado  apenas  na  porta  4242.  Por  razões  de\
 segurança,  não  deve  ser possível  conectar  usando  SSH  como  root.
-  - *O uso de SSH será testado durante a defesa com a criação de uma novo conta.\
+  - *O uso de SSH será testado durante a defesa com a criação de uma nova conta.\
 Portanto, você deve entender como funciona.*
 - Você tem que configurar seu sistema operacional com o UFW (ou firewalld para\
 Rocky) firewall e assim deixar apenas a porta 4242 aberta.
