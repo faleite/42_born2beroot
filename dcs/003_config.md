@@ -12,6 +12,8 @@
 ## 2. Sudo utilizadores e grupos
 - Entrar no root (utilizador raiz): `su`
 - Root password (System administrative account): `faaraujo42lisboa*`
+- Antes e bom atualizar os pacotes: `apt update -y` e `apt upgrade -y`
+  - *adicionar a opção "-y" ao comando, você está instruindo o sistema a responder automaticamente "sim" a todas as perguntas de confirmação que possam surgir.* 
 - Instalar o sudo: `apt install sudo`
 - Reiniciar a máquina: `sudo reboot`
 - Verificar se sudo instalado (apos entrar no root): `sudo -V`
@@ -26,6 +28,16 @@
   - Verificar se tudo foi feito corretamente: `getent group user42` e `getent group sudo` 
 
 ## 3. Install and Config SSH
+- Ver suas particoes **LVM**: `lsblk` ou `lsblk -b` (`-b` ve as infomacoes de tamanho em bytes)
+**AppArmor**
+- Install: `apt install apparmor apparmor-profiles apparmor-utils`
+- Ver status do **Apparmor**:
+  1. `cd /sbin`
+  2. `./aa-status`
+  3. `systemctl status`
+  4. `systemctl status ssh.service`
+- Ver endereco IP da maquina virtual: `hostname -I`  (`10.0.2.15`)
+  - vboxnet0 `192.168.56.1/24` 
 ### 1. Install
 - Atualizar os repositorios (/ect/apt/sources.list): `sudo apt update`
 - Instalar OpenSSH (principal ferramenta de conectividade remota): `sudo apt install openssh-server`
@@ -47,7 +59,7 @@
 - Verificar status do SSH: `sudo service ssh status`
 
 ## 4. Install and Config [UFW](./105_firewall)
-- Instalar UFW: `sudo apt instal ufw`
+- Instalar UFW: `sudo apt install ufw`
 - Activar UFW: `sudo ufw enable`
 - Permitir ligações através da porta 4242: `sudo ufw allow 4242`
 - Verificar estado da *Firewall*: `sudo ufw status`
@@ -58,7 +70,7 @@
 - Criar ficheiro: `touch /etc/sudoers.d/sudo_config`
 **Criar diretorio */sudo* para armazenar cada cmd sudo (tanto entrada quanto saida):**
 - cirar diretorio: `mkdir /var/log/sudo`
-**Editar ficheiro *sudo_config:*** `nao etc/sudoers.d/sudo_config`
+**Editar ficheiro *sudo_config:*** `nano /etc/sudoers.d/sudo_config`
 - Adicionar ao ficheiro:
 ```bash
 Defaults  passwd_tries=3
@@ -97,7 +109,7 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 **Instalar pacotes de instalacao *libpam-pwquality*:***
 - Instalar pacotes: `sudo apt install libpam-pwquality`
 **Editar ficheiro common-password da lib pam.d**
-- Editar ficheiro: `nano /etc/pam.d/cammon-password`
+- Editar ficheiro: `nano /etc/pam.d/common-password`
   1. Adicionar apos a linha com o titulo `# here are the per-package modules (the "Primary" block)` .
   2.  Ao fina desta linha adicione: `minlen=10 ucredit=-1 dcredit=-1 lcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
 
