@@ -47,7 +47,7 @@ presente.
 requisitos:*
 - Sua senha deve expirar a cada 30 dias.
 - O número mínimo de dias permitido antes da modificação de uma senha será\
-definido como 2.m
+definido como 2.
 - O usuário deve receber uma mensagem de aviso 7 dias antes de sua senha expirar.
 - Sua senha deve ter pelo menos 10 caracteres. Deve conter uma letra maiúscula,\
 uma letra minúscula e um número. Além disso, não deve conter mais de 3 caracteres\

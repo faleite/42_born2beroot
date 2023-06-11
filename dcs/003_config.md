@@ -1,6 +1,6 @@
 # Configurations
 
-## Setup users
+## 1. Setup users
 - Host name (deve ser 42 user + 42): `faaraujo42`
 - Domain name (vazio):
 - Root password (System administrative account): `faaraujo42lisboa*`
@@ -9,7 +9,7 @@
 - Password for the new user: `hello42lisboa`
 - Encryption passphrase: `hello42lisboa`
 
-## Sudo utilizadores e grupos
+## 2. Sudo utilizadores e grupos
 - Entrar no root (utilizador raiz): `su`
 - Root password (System administrative account): `faaraujo42lisboa*`
 - Instalar o sudo: `apt install sudo`
@@ -25,12 +25,12 @@
   - Grupo sudo: `sudo adduser faaraujo sudo`
   - Verificar se tudo foi feito corretamente: `getent group user42` e `getent group sudo` 
 
-## Install SSH
+## 3. Install and Config SSH
+### 1. Install
 - Atualizar os repositorios (/ect/apt/sources.list): `sudo apt update`
 - Instalar OpenSSH (principal ferramenta de conectividade remota): `sudo apt install openssh-server`
 - Verificar se foi instalado correctamente: `sudo service ssh status`
-  
-## Config SSH
+### 2. Config 
 *Entrar no utilizador root `su`, ou colocar `sudo` no inicio do cmd*
 
 **Primeiro ficheiro a editar: `/etc/ssh/sshd_config`**
@@ -46,6 +46,72 @@
 - Reiniciar servico SSH: `sudo service ssh restart`
 - Verificar status do SSH: `sudo service ssh status`
 
-## Install [UFW](./105_firewall)
+## 4. Install and Config [UFW](./105_firewall)
+- Instalar UFW: `sudo apt instal ufw`
+- Activar UFW: `sudo ufw enable`
+- Permitir ligações através da porta 4242: `sudo ufw allow 4242`
+- Verificar estado da *Firewall*: `sudo ufw status`
 
-## Config UFW
+## 5. Config senha forte para o sudo
+**Criar um ficheiro para armazenar a configuração da senha forte:**
+- Caminho a ser armazenado: `/etc/sudoers.d/`
+- Criar ficheiro: `touch /etc/sudoers.d/sudo_config`
+**Criar diretorio */sudo* para armazenar cada cmd sudo (tanto entrada quanto saida):**
+- cirar diretorio: `mkdir /var/log/sudo`
+**Editar ficheiro *sudo_config:*** `nao etc/sudoers.d/sudo_config`
+- Adicionar ao ficheiro:
+```bash
+Defaults  passwd_tries=3
+Defaults  badpass_message="Mensaje de error personalizado"
+Defaults  logfile="/var/log/sudo/sudo_config"
+Defaults  log_input, log_output
+Defaults  iolog_dir="/var/log/sudo"
+Defaults  requiretty
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+```
+**Sobre o que cada comando no ficheiro faz:**
+```bash
+# Numero de tentativas em caso de introduzir contrasenha errada.
+Defaults  passwd_tries=3
+# Menssagem que sera mostrada ao introduzir senha errada.
+Defaults  badpass_message="Mensaje de error personalizado"
+# Arquivo onde sera registrado todos os comandos sudo.
+Defaults  logfile="/var/log/sudo/sudo_config"
+# Para que cada cmd executado com o sudo seja arquivado no dir. especificado.
+Defaults  log_input, log_output
+Defaults  iolog_dir="/var/log/sudo"
+# Para ativar o modo TTY.
+Defaults  requiretty
+# Para restringir os diretorios que serao utilizados com o sudo.
+Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+```
+
+## 6. Config politica senha forte
+**Editar ficheiro *login.defs*:**
+- Editar ficheiro: `nano /etc/login.defs`
+- Modificar os seguintes parâmetros:
+  1. `PASS_MAX_DAYS 99999`  para `PASS_MAX_DAYS 30` (Tempo de expiracao da palavra-passe).
+  2. `PASS_MIN_DAYS 0` para `PASS_MIN_DAYS 2` (Minimo de dias permitido antes de alterar uma palavra-passe).
+  3. `PASS_WARN_AGE 7` (Menssagem  de numero de dias ate a palavra passe expirar)
+
+**Instalar pacotes de instalacao *libpam-pwquality*:***
+- Instalar pacotes: `sudo apt install libpam-pwquality`
+**Editar ficheiro common-password da lib pam.d**
+- Editar ficheiro: `nano /etc/pam.d/cammon-password`
+  1. Adicionar apos a linha com o titulo `# here are the per-package modules (the "Primary" block)` .
+  2.  Ao fina desta linha adicione: `minlen=10 ucredit=-1 dcredit=-1 lcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root`
+
+**Como deve ser a aparecia do ficheiro:**
+![image5.png](./image5.png)
+
+**O que cada comando faz:**
+`minlen=10`  *O número mínimo de caracteres que a senha deve conter.*
+`ucredit=-1`  *Deve conter pelo menos uma letra maiúscula. Colocamos o - como deve conter pelo menos um caracter, se colocarmos + queremos dizer no máximo esses caracteres.*
+`dcredit=-1`  *Deve conter pelo menos um dígito.*
+`lcredit=-1` *Deve conter pelo menos uma letra minúscula.*
+`maxrepeat=3` *Não se pode ter o mesmo carácter mais de 3 vezes seguidas.*
+`reject_username` *Não pode conter o nome do utilizador.*
+`difok=7`  *Deve ter pelo menos 7 caracteres que não façam parte da senha antiga.*
+`enforce_for_root`  *Iremos implementar esta política para o utilizador de raiz.*
+
+## 7. Conectar via SSH
