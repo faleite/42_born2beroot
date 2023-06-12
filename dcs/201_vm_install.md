@@ -71,4 +71,37 @@
 - Defina a palavra passe: *(Guarde a senha pois sera importante)*
 
 ### Configurar o gestor de volume lógico
-- Selecione
+- Selecione **Configure the logical Volume Manager**
+- Selecione **Yes** para guardar as alteracoes do disco
+- Selecione **Create volume group** *(Para agrupar as particoes)*
+- Volume group name: **LVMGroup** *(Conforme indicado)*
+- Selecione a particao: **sda5_crypt** *(Exemplo)*
+- LVM configuration action: **Create logical volume**
+- Selecione **LVMGroup**
+- Logical volume name: **root**
+- Logical volume size: **10g**
+- *Repita os 4 ultimos passos mudando o nome e tamanho conforme a imagem acima*
+- Apos criar todos os volumes logicos selecione: **Finish**
+
+### Configurar ponto de montagem dos ficheiros
+- Selecione **#1** *(home)*
+- Partition settings: **Use as: do not use**
+- How to use this partition: **Ext4 ...** *(Amplamente utilizado em Linux)*
+  - No caso do **swap** selecione **swap are** 
+- Partition settings: **Mount point**
+  - No caso do  **var--log** selecione **manual** introduza **/var/log** 
+- Mount point for this partition: **/home - ...** *(O mesmo nome da particao)*
+- Partition settings: **Done setting up the partition**
+- *Repita os 6 ultimos passos mudando o nome e tamanho conforme a imagem acima*
+- Ao final selecione: **Finish partitioning and write chages to disk**
+- *Certifique que as particoes sao as mesmas da imagem acima*
+- Selecione **Yes** para as alteracoes serem guardadas
+- Selecione **No** *(Pois nao precisamos de quaisquer pacotes adicionais*
+- Selecione o seu pais: **Portugal** *(Exemplo)*
+- Selecione **deb.debian.org**
+- Sobre HTTP deixe a opcao vazia: **Continue**
+- Selecione **No** *(Nao queremos mostrar nossa estatisticas*
+- Remova todas as opcoes (com a barra de espaco): **Continue**
+- Selecione **Yes** para instalar [GRUB rrot](https://pt.wikipedia.org/wiki/GNU_GRUB)
+- Selecione **/dev/sda (ata_VBOX_HARDDISK)**
+- Selecione **Continue** para terminar a instalacao
