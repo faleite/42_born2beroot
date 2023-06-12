@@ -127,3 +127,6 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 `enforce_for_root`  *Iremos implementar esta política para o utilizador de raiz.*
 
 ## 7. Conectar via SSH
+
+### Links
+- [SSH](https://www.youtube.com/watch?v=GO57OOnBhQ0)
