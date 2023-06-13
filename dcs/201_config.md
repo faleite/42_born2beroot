@@ -13,7 +13,9 @@
 - Entrar no root (utilizador raiz): `su`
 - Root password (System administrative account): `faaraujo42lisboa*`
 - Antes e bom atualizar os pacotes: `apt update -y` e `apt upgrade -y`
-  - *adicionar a opção "-y" ao comando, você está instruindo o sistema a responder automaticamente "sim" a todas as perguntas de confirmação que possam surgir.* 
+  - *adicionar a opção "-y" ao comando, você está instruindo o sistema\
+  a responder automaticamente "sim" a todas as perguntas de confirmação\
+  que possam surgir.* 
 - Instalar o sudo: `apt install sudo`
 - Reiniciar a máquina: `sudo reboot`
 - Verificar se sudo instalado (apos entrar no root): `sudo -V`
@@ -29,7 +31,7 @@
 
 ## 3. Install and Config SSH
 - Ver suas particoes **LVM**: `lsblk` ou `lsblk -b` (`-b` ve as infomacoes de tamanho em bytes)
-**AppArmor**
+### AppArmor
 - Install: `apt install apparmor apparmor-profiles apparmor-utils`
 - Ver status do **Apparmor**:
   1. `cd /sbin`
@@ -40,7 +42,8 @@
   - vboxnet0 `192.168.56.1/24` 
 ### 1. Install
 - Atualizar os repositorios (/ect/apt/sources.list): `sudo apt update`
-- Instalar OpenSSH (principal ferramenta de conectividade remota): `sudo apt install openssh-server`
+- Instalar OpenSSH (principal ferramenta de conectividade remota):\
+`sudo apt install openssh-server`
 - Verificar se foi instalado correctamente: `sudo service ssh status`
 ### 2. Config 
 *Entrar no utilizador root `su`, ou colocar `sudo` no inicio do cmd*
@@ -116,15 +119,15 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 **Como deve ser a aparecia do ficheiro:**
 ![image5.png](./image5.png)
 
-**O que cada comando faz:**
-`minlen=10`  *O número mínimo de caracteres que a senha deve conter.*
-`ucredit=-1`  *Deve conter pelo menos uma letra maiúscula. Colocamos o - como deve conter pelo menos um caracter, se colocarmos + queremos dizer no máximo esses caracteres.*
-`dcredit=-1`  *Deve conter pelo menos um dígito.*
-`lcredit=-1` *Deve conter pelo menos uma letra minúscula.*
-`maxrepeat=3` *Não se pode ter o mesmo carácter mais de 3 vezes seguidas.*
-`reject_username` *Não pode conter o nome do utilizador.*
-`difok=7`  *Deve ter pelo menos 7 caracteres que não façam parte da senha antiga.*
-`enforce_for_root`  *Iremos implementar esta política para o utilizador de raiz.*
+### O que cada comando faz:
+1. `minlen=10`  *O número mínimo de caracteres que a senha deve conter.*
+2. `ucredit=-1`  *Deve conter pelo menos uma letra maiúscula. Colocamos o - como deve conter pelo menos um caracter, se colocarmos + queremos dizer no máximo esses caracteres.*
+3. `dcredit=-1`  *Deve conter pelo menos um dígito.*
+4. `lcredit=-1` *Deve conter pelo menos uma letra minúscula.*
+5. `maxrepeat=3` *Não se pode ter o mesmo carácter mais de 3 vezes seguidas.*
+6. `reject_username` *Não pode conter o nome do utilizador.*
+7. `difok=7`  *Deve ter pelo menos 7 caracteres que não façam parte da senha antiga.*
+8. `enforce_for_root`  *Iremos implementar esta política para o utilizador de raiz.*
 
 ## 7. Conectar via SSH
 
