@@ -1,6 +1,6 @@
 # Configurations
 
-## 1. Setup users
+## 1. Users
 - Host name (deve ser 42 user + 42): `faaraujo42`
 - Domain name (vazio):
 - Root password (System administrative account): `faaraujo42lisboa*`
@@ -21,7 +21,7 @@
 - Verificar se sudo instalado (apos entrar no root): `sudo -V`
 - Criar utilizador (Ja foi criado no inicio): `sudo adduser faaraujo`
 - Criar um novo grupo: `sudo addgroup user42`
-  - Sera mostrada a menssagem de sucesso com o **G**roup **Id**entifier Ex.: `(GID 1002)` 
+  - Sera mostrada a menssagem de sucesso com o **G**roup **Id**entifier Ex.: `(GID 1001)` 
   - Podemos verificar se foi criado o grupo com o cmd: `getent group user42`
   - Podemos ver todos os grupos e utilizadores dentro deles: `cat /etc/group`
 - Incluir o utilizador nos grupos: 
@@ -29,27 +29,36 @@
   - Grupo sudo: `sudo adduser faaraujo sudo`
   - Verificar se tudo foi feito corretamente: `getent group user42` e `getent group sudo` 
 
-## 3. Install and Config SSH
-- Ver suas particoes **LVM**: `lsblk` ou `lsblk -b` (`-b` ve as infomacoes de tamanho em bytes)
-### AppArmor
-- Install: `apt install apparmor apparmor-profiles apparmor-utils`
-- Ver status do **Apparmor**:
-  1. `cd /sbin`
-  2. `./aa-status`
-  3. `systemctl status`
-  4. `systemctl status ssh.service`
-- Ver endereco IP da maquina virtual: `hostname -I`  (`10.0.2.15`)
-  - vboxnet0 `192.168.56.1/24` 
+## 3. Install Apparmor
+### 1 Install
+1. Verifique se o pacote `apparmor` está instalado em seu sistema:
+`sudo apt install apparmor apparmor-profiles apparmor-utils`
+2. Reinicie o sistema, garantir que as configurações sejam aplicadas corretamente:
+`sudo reboot`
+3. Verifique se o AppArmor está em execução:
+`sudo systemctl status apparmor`
+*Certifique-se de que o status seja "active" ou "running", o que indica que o AppArmor está em execução.*
+4. Você pode verificar o status dos perfis do AppArmor com o seguinte comando:
+`sudo apparmor_status` ou `/sbin/aa-status`
+
+*O `systemctl` permite gerenciar serviços, unidades e outras funcionalidades relacionadas ao sistema. Consulte a documentação `man systemctl` no terminal.*
+- Vejas o status dos serviços no terminal: `systemctl status`
+
+## 4. Install and Config SSH
 ### 1. Install
-- Atualizar os repositorios (/ect/apt/sources.list): `sudo apt update`
-- Instalar OpenSSH (principal ferramenta de conectividade remota):\
+- Atualizar os repositorios (/ect/apt/sources.list):
+`sudo apt update`
+- Instalar OpenSSH (principal ferramenta de conectividade remota):
 `sudo apt install openssh-server`
-- Verificar se foi instalado correctamente: `sudo service ssh status`
+- Verificar se foi instalado correctamente:
+`sudo service ssh status` ou `systemctl status ssh.service`
+- Ver endereco IP da maquina virtual:
+`hostname -I`  (`10.0.2.15`)
 ### 2. Config 
 *Entrar no utilizador root `su`, ou colocar `sudo` no inicio do cmd*
 
 **Primeiro ficheiro a editar: `/etc/ssh/sshd_config`**
--  Editar ficheiro: `nano etc/ssh/sshd_config`
+-  Editar ficheiro: `nano /etc/ssh/sshd_config`
   1. `Port 22` para `Port 4242`
   2. `PermitRootLogin prohibit-password`  para `PermitRootLogin no`
 
@@ -61,13 +70,13 @@
 - Reiniciar servico SSH: `sudo service ssh restart`
 - Verificar status do SSH: `sudo service ssh status`
 
-## 4. Install and Config [UFW](./105_firewall)
+## 5. Install and Config [UFW](./105_firewall)
 - Instalar UFW: `sudo apt install ufw`
 - Activar UFW: `sudo ufw enable`
 - Permitir ligações através da porta 4242: `sudo ufw allow 4242`
 - Verificar estado da *Firewall*: `sudo ufw status`
 
-## 5. Config senha forte para o sudo
+## 6. Config senha forte para o sudo
 **Criar um ficheiro para armazenar a configuração da senha forte:**
 - Caminho a ser armazenado: `/etc/sudoers.d/`
 - Criar ficheiro: `touch /etc/sudoers.d/sudo_config`
@@ -101,7 +110,7 @@ Defaults  requiretty
 Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 ```
 
-## 6. Config politica senha forte
+## 7. Config politica senha forte
 **Editar ficheiro *login.defs*:**
 - Editar ficheiro: `nano /etc/login.defs`
 - Modificar os seguintes parâmetros:
@@ -129,7 +138,7 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 7. `difok=7`  *Deve ter pelo menos 7 caracteres que não façam parte da senha antiga.*
 8. `enforce_for_root`  *Iremos implementar esta política para o utilizador de raiz.*
 
-## 7. Conectar via SSH
+## 8. Conectar via SSH
 
 ### Links
 - [SSH](https://www.youtube.com/watch?v=GO57OOnBhQ0)

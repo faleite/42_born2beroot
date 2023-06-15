@@ -1,0 +1,11 @@
+# AppArmor
+
+O AppArmor é um framework de segurança desenvolvido para o kernel do Linux. Ele é projetado para reforçar a segurança do sistema operacional, permitindo que os administradores definam políticas de segurança baseadas em perfis para aplicativos individuais.
+
+O objetivo principal do AppArmor é controlar as permissões de acesso dos aplicativos, limitando suas ações e restringindo o que eles podem fazer no sistema. Ele define um conjunto de regras e restrições para cada aplicativo, especificando quais recursos, como arquivos, diretórios, dispositivos e serviços de rede, podem ser acessados por um determinado aplicativo e quais ações estão permitidas ou proibidas.
+
+*O **AppArmor** opera usando um modelo de segurança de controle de acesso discrecional (DAC)*, onde as permissões são definidas pelo proprietário do objeto ou administrador do sistema. *Ele complementa o modelo padrão de permissões do Linux, como o sistema de controle de acesso obrigatório (MAC) fornecido pelo SELinux.*
+
+Uma das vantagens do *AppArmor* é sua *abordagem baseada em perfil*. Cada aplicativo tem seu próprio perfil de segurança, que contém as regras específicas que determinam suas permissões. Esses perfis podem ser criados manualmente ou gerados automaticamente pelo AppArmor com base no comportamento do aplicativo durante um processo chamado de "profilagem". Isso permite uma configuração mais granular e adaptável da segurança para cada aplicativo, reduzindo a superfície de ataque e mitigando possíveis riscos de segurança.
+
+O AppArmor é usado por várias distribuições Linux, como o Ubuntu, openSUSE e SUSE Linux Enterprise. Ele *fornece uma camada adicional de segurança ao restringir as ações de aplicativos maliciosos ou comprometidos, ajudando a prevenir a exploração de vulnerabilidades e a mitigar possíveis danos ao sistema*. No entanto, assim como o SELinux, o AppArmor requer configuração cuidadosa e atualização regular para garantir uma proteção eficaz e evitar problemas de compatibilidade.

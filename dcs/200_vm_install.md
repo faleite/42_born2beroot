@@ -42,7 +42,6 @@
 - Selecione **Create a new partition**
 
 ### Criar as particoes conforme a imagem
-![image4.png](./image4.png)
 **Particao "sda1"**
 - New parttion size: **500m** *(sda1)*
 - Selecione **Primary** (Pois sera onde o sistema sera instalado)
@@ -50,6 +49,7 @@
 - Selecione **Mount point:      /**
 - Selecione **/boot - static files of the boot loader**
 - Selecione **Done setting up partition** *(Pois concluimos a config da particao atual)*
+
 **Particao "sda5"**
 - Selecione **pri/log ... FREE SPACE**
 - Selecione **Create a new partition**
@@ -80,9 +80,10 @@
 - Selecione **LVMGroup**
 - Logical volume name: **root**
 - Logical volume size: **10g**
-- *Repita os 4 ultimos passos mudando o nome e tamanho conforme a imagem acima*
+- *Repita os 4 ultimos passos mudando o nome e tamanho conforme a imagem abaixo*
 - Apos criar todos os volumes logicos selecione: **Finish**
 
+![image4.png](./image4.png)
 ### Configurar ponto de montagem dos ficheiros
 - Selecione **#1** *(home)*
 - Partition settings: **Use as: do not use**
@@ -102,6 +103,8 @@
 - Sobre HTTP deixe a opcao vazia: **Continue**
 - Selecione **No** *(Nao queremos mostrar nossa estatisticas*
 - Remova todas as opcoes (com a barra de espaco): **Continue**
-- Selecione **Yes** para instalar [GRUB rrot](https://pt.wikipedia.org/wiki/GNU_GRUB)
+- Selecione **Yes** para instalar [GRUB boot](https://pt.wikipedia.org/wiki/GNU_GRUB)
 - Selecione **/dev/sda (ata_VBOX_HARDDISK)**
 - Selecione **Continue** para terminar a instalacao
+
+*Ver suas particoes **LVM**: `lsblk` ou `lsblk -b` (`-b` ve as infomacoes de tamanho em bytes)*
