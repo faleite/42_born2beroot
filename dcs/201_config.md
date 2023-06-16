@@ -29,7 +29,7 @@
   - Grupo sudo: `sudo adduser faaraujo sudo`
   - Verificar se tudo foi feito corretamente: `getent group user42` e `getent group sudo` 
 
-## 3. Install Apparmor
+## 3. Install [Apparmor](./102_apparmor)
 ### 1 Install
 1. Verifique se o pacote `apparmor` está instalado em seu sistema:
 `sudo apt install apparmor apparmor-profiles apparmor-utils`
@@ -44,7 +44,7 @@
 *O `systemctl` permite gerenciar serviços, unidades e outras funcionalidades relacionadas ao sistema. Consulte a documentação `man systemctl` no terminal.*
 - Vejas o status dos serviços no terminal: `systemctl status`
 
-## 4. Install and Config SSH
+## 4. Install and Config [SSH](./104_ssh)
 ### 1. Install
 - Atualizar os repositorios (/ect/apt/sources.list):
 `sudo apt update`
@@ -76,7 +76,7 @@
 - Permitir ligações através da porta 4242: `sudo ufw allow 4242`
 - Verificar estado da *Firewall*: `sudo ufw status`
 
-## 6. Config senha forte para o sudo
+## 6. Config senha forte para o [sudo](./106_sudo)
 **Criar um ficheiro para armazenar a configuração da senha forte:**
 - Caminho a ser armazenado: `/etc/sudoers.d/`
 - Criar ficheiro: `touch /etc/sudoers.d/sudo_config`
@@ -85,13 +85,13 @@
 **Editar ficheiro *sudo_config:*** `nano /etc/sudoers.d/sudo_config`
 - Adicionar ao ficheiro:
 ```bash
-Defaults  passwd_tries=3
-Defaults  badpass_message="Mensaje de error personalizado"
-Defaults  logfile="/var/log/sudo/sudo_config"
-Defaults  log_input, log_output
-Defaults  iolog_dir="/var/log/sudo"
-Defaults  requiretty
-Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults    passwd_tries=3
+Defaults    badpass_message="Mensaje de error personalizado"
+Defaults    logfile="/var/log/sudo/sudo_config"
+Defaults    log_input, log_output
+Defaults    iolog_dir="/var/log/sudo"
+Defaults    requiretty
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 ```
 **Sobre o que cada comando no ficheiro faz:**
 ```bash
@@ -118,7 +118,7 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
   2. `PASS_MIN_DAYS 0` para `PASS_MIN_DAYS 2` (Minimo de dias permitido antes de alterar uma palavra-passe).
   3. `PASS_WARN_AGE 7` (Menssagem  de numero de dias ate a palavra passe expirar)
 
-**Instalar pacotes de instalacao *libpam-pwquality*:***
+**Instalar pacotes de instalacao *[libpam-pwquality](./106_sudo)*:**
 - Instalar pacotes: `sudo apt install libpam-pwquality`
 **Editar ficheiro common-password da lib pam.d**
 - Editar ficheiro: `nano /etc/pam.d/common-password`
@@ -140,7 +140,25 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 
 ## 8. Conectar via SSH
 
+**Feche a maquina virtual**
+
+*Adicionar regra de encaminhamento para o VirtualBox*
+
+1. Vá para VirtualBox-> Escolha a VM->Selecione Configurações
+2. Escolha “Rede”-> “Adaptador 1"->”Avançado”->”Encaminhamento de porta”
+![image6.png](./image6.png)
+3. Insira os valores conforme mostrado:
+![image7.png](./image7.png)
+4. Abra a VM e reinicie o servidor SSH:
+`sudo systemctl reiniciar ssh`
+5. Verifique o status do ssh:
+`sudo service sshd status`
+6. Do lado do host do iTerm2 ou Terminal, digite como mostrado abaixo:
+`ssh username@127.0.0.1 -p 4242` ou `ssh username@localhost -p 4242`
+7. Encerre a conexão:
+`exit` ou `logout`
+
 ### Links
 - [SSH](https://www.youtube.com/watch?v=GO57OOnBhQ0)
-
+- [Tutorial](https://baigal.medium.com/born2beroot-e6e26dfb50ac)+
 
