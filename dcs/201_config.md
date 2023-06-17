@@ -150,7 +150,7 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 3. Insira os valores conforme mostrado:
 ![image7.png](./image7.png)
 4. Abra a VM e reinicie o servidor SSH:
-`sudo systemctl reiniciar ssh`
+`sudo systemctl restart ssh`
 5. Verifique o status do ssh:
 `sudo service sshd status`
 6. Do lado do host do iTerm2 ou Terminal, digite como mostrado abaixo:

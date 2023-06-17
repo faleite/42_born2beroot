@@ -4,8 +4,8 @@
 Deve ser desenvolvido em bash.*
 
 *Na inicialização do servidor, o script exibirá algumas informações (listadas\
-abaixo) em todos os terminais a cada 10 minutos (dê uma olhada na parede).\
-A bandeira é opcional. Nenhum erro deve ser visível*
+abaixo) em todos os terminais a cada 10 minutos (dê uma olhada na **wall**).\
+O banner é opcional. Nenhum erro deve ser visível*
 
 *Seu script deve ser sempre capaz de exibir as seguintes informações:*
 
