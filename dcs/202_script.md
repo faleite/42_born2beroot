@@ -297,3 +297,5 @@ Esse código executa uma série de comandos em conjunto para contar o número de
 Em resumo, o código completo conta o número de vezes que o comando `sudo` foi executado no sistema, utilizando o registro do `journalctl`. Ele filtra as entradas do `journalctl` para exibir apenas as relacionadas ao `sudo`, filtra novamente para obter apenas as linhas que contêm informações sobre a execução do comando (`COMMAND`), e, finalmente, conta o número de linhas resultantes com o `wc -l`. O resultado é o número de vezes que o comando `sudo` foi executado.
 
 O `journalctl` é um utilitário de linha de comando no Linux usado para acessar e visualizar os registros do sistema coletados pelo sistema de log do systemd, conhecido como "journald". Ele permite ler e analisar os logs gerados pelo sistema operacional, incluindo mensagens do kernel, registros de inicialização, mensagens de serviços e aplicativos em execução, entre outros.
+
+# Crontab

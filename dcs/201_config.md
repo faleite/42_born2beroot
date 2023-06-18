@@ -53,7 +53,7 @@
 - Verificar se foi instalado correctamente:
 `sudo service ssh status` ou `systemctl status ssh.service`
 - Ver endereco IP da maquina virtual:
-`hostname -I`  (`10.0.2.15`)
+`hostname -I` 
 ### 2. Config 
 *Entrar no utilizador root `su`, ou colocar `sudo` no inicio do cmd*
 
@@ -85,7 +85,10 @@
 **Editar ficheiro *sudo_config:*** `nano /etc/sudoers.d/sudo_config`
 - Adicionar ao ficheiro:
 ```bash
-Defaults    passwd_tries=3
+Defaults    passwd_tr
+￼
+￼
+ies=3
 Defaults    badpass_message="Mensaje de error personalizado"
 Defaults    logfile="/var/log/sudo/sudo_config"
 Defaults    log_input, log_output
@@ -144,21 +147,17 @@ Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 
 *Adicionar regra de encaminhamento para o VirtualBox*
 
-1. Vá para VirtualBox-> Escolha a VM->Selecione Configurações
-2. Escolha “Rede”-> “Adaptador 1"->”Avançado”->”Encaminhamento de porta”
+1. Vá para VirtualBox-> Escolha a VM->Settings
+2. Escolha “Network”-> “Adapter 1"->”Attached to:”->”Bridged Adapter”->"OK"
 ![image6.png](./image6.png)
-3. Insira os valores conforme mostrado:
-![image7.png](./image7.png)
-4. Abra a VM e reinicie o servidor SSH:
+3. Abra a VM e reinicie o servidor SSH:
 `sudo systemctl restart ssh`
-5. Verifique o status do ssh:
+4. Verifique o status do ssh:
 `sudo service sshd status`
-6. Do lado do host do iTerm2 ou Terminal, digite como mostrado abaixo:
-`ssh username@127.0.0.1 -p 4242` ou `ssh username@localhost -p 4242`
-7. Encerre a conexão:
+5. Pegue o IP:
+`hostname -I`
+7. Do lado do host do iTerm2 ou Terminal, digite como mostrado abaixo:
+`ssh username@ip-address -p 4242`
+6. Encerre a conexão:
 `exit` ou `logout`
-
-### Links
-- [SSH](https://www.youtube.com/watch?v=GO57OOnBhQ0)
-- [Tutorial](https://baigal.medium.com/born2beroot-e6e26dfb50ac)
 

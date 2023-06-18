@@ -46,7 +46,7 @@
 - New parttion size: **500m** *(sda1)*
 - Selecione **Primary** (Pois sera onde o sistema sera instalado)
 - Selecione **Beginnig** *(Queremos que a nova particao seja criada no inicio do espaco disponivel)*
-- Selecione **Mount point:      /**
+- Selecione **Mount point:**
 - Selecione **/boot - static files of the boot loader**
 - Selecione **Done setting up partition** *(Pois concluimos a config da particao atual)*
 
@@ -55,7 +55,7 @@
 - Selecione **Create a new partition**
 - New parttion size: **max** *(Para o tamanho maximo)*
 - Selecione **Logical**
-- Selecione **Mount point:      /**
+- Selecione **Mount point:**
 - Selecione **Do not Mount it**
 - Selecione **Done setting up partition** *(Pois concluimos a config da particao atual)*
 
@@ -90,7 +90,7 @@
 - How to use this partition: **Ext4 ...** *(Amplamente utilizado em Linux)*
   - No caso do **swap** selecione **swap are** 
 - Partition settings: **Mount point**
-  - No caso do  **var--log** selecione **manual** introduza **/var/log** 
+  - No caso do  **var-log** selecione **manual** introduza **/var/log** 
 - Mount point for this partition: **/home - ...** *(O mesmo nome da particao)*
 - Partition settings: **Done setting up the partition**
 - *Repita os 6 ultimos passos mudando o nome e tamanho conforme a imagem acima*
