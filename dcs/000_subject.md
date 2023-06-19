@@ -77,3 +77,12 @@ devem ser restritos.
 ```sh
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 ```
+
+# Avaliação
+
+### Perguntas
+- [Notas Filipa](./112_notas_filipa.pdf)
+- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-1-respostas-de-avalia%C3%A7%C3%A3o-)
+
+### Comandos de avaliação
+- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-2-comandos-de-avalia%C3%A7%C3%A3o-%EF%B8%8F)

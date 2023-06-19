@@ -42,8 +42,9 @@ natcp=$(ss -ta | grep "ESTAB" | wc -l)
 nuser=$(users | wc -w)
 
 # IP and MAC Address
-maca=$(ip link | grep "link/ether" | awk '{print $2}')
-ipa=$(hostname -I)
+maca=$(ip link | grep -m 1 "link/ether" | awk '{print $2}')
+# ipa=$(hostname -I)
+ipa=$(hostname -I | awk '{print $1}')
 
 # Command SUDO
 ncsudo=$(journalctl _COMM=sudo | grep "COMMAND" | wc -l)
@@ -184,7 +185,7 @@ Claro! Vou explicar o código linha por linha:
 6. `|` (pipe): Mais um pipe é usado para redirecionar a saída do comando anterior para o próximo comando.
 7. `awk '{m_t += $2} END {printf"%.0fGb\n", m_t/1024}'`: O comando `awk` é usado para processar e manipular dados de texto. Aqui, estamos acumulando a soma dos valores do segundo campo ($2) em cada linha e armazenando na variável "m_t". No final, quando todas as linhas foram processadas, usamos o bloco "END" para imprimir o valor final armazenado em "m_t" dividido por 1024 para convertê-lo em gigabytes (GB). A formatação "%.0fGb\n" é usada para exibir o resultado sem casas decimais e com a unidade "GB".
 
-Resumindo, o código completo `df -m | grep "/dev/" | grep -v "/boot/" | awk '{m_t += $2} END {printf"%.0fGb\n", m_t/1024}'` exibe a soma do espaço total (em gigabytes) dos sistemas de arquivos montados em dispositivos físicos, excluindo a partição "/boot/". É uma maneira de obter o espaço total em gigabytes usado em discos físicos no seu sistema Linux, excluindo a partição de boot, se houver.
+Resumindo, o código completo `df -m | grep "/dev/" | grep -v "/boot/" | awk '{m_t += $2} END {printf"%.0fGb\n", m_t/1024}'` exibe a soma do espaço total (em gigabytes) dos sistemas de arConquered the achievements "404 - Sleep not found" and "In the name of Nicolas !"quivos montados em dispositivos físicos, excluindo a partição "/boot/". É uma maneira de obter o espaço total em gigabytes usado em discos físicos no seu sistema Linux, excluindo a partição de boot, se houver.
 
 ### Obter a porcentagem de memória utilizada do disk
 
@@ -272,7 +273,7 @@ Em resumo, o código completo conta o número de conexões TCP estabelecidas no 
 ### Endereço IPv4
 `hostname -I`
 ### Endereço MAC (Media Access Control)
-`ip link | grep "link/ether" | awk '{print $2}'`
+`ip link | grep -m 1 "link/ether" | awk '{print $2}'`
 
 O comando `ip link` é usado no terminal Linux para exibir e gerenciar as interfaces de rede do sistema. Ele fornece informações sobre as interfaces de rede disponíveis e permite realizar várias operações relacionadas a essas interfaces. Aqui estão algumas das principais funcionalidades do comando `ip link`:
 
@@ -281,6 +282,7 @@ O comando `ip link` é usado no terminal Linux para exibir e gerenciar as interf
 3. Configurar parâmetros de interface: O comando `ip link set <interface> <parâmetro> <valor>` permite configurar vários parâmetros de uma interface, como definir o endereço MAC, definir a MTU, habilitar/desabilitar recursos específicos, entre outros.
 4. Adicionar/remover endereços IP: Com o comando `ip addr add <endereço> dev <interface>`, você pode adicionar um endereço IP a uma interface específica. O comando `ip addr del <endereço> dev <interface>` é usado para remover um endereço IP da interface.
 5. Alterar nome da interface: O comando `ip link set <interface> name <novo_nome>` permite alterar o nome de uma interface de rede para um novo nome específico.
+6. `-m 1`. A opção `-m` especifica o número máximo de ocorrências que o `grep` deve encontrar antes de parar a pesquisa, neste caso quero pegar apenas a primeira ocorrencia `-m 1`.
 
 Essas são apenas algumas das funcionalidades básicas do comando `ip link`. Ele é uma ferramenta poderosa para gerenciar as interfaces de rede no Linux, permitindo configurar, exibir e controlar diversos aspectos relacionados à conectividade de rede do sistema. Para mais informações e opções disponíveis, consulte a página de manual do comando `ip` digitando `man ip` no terminal.
 
@@ -299,3 +301,4 @@ Em resumo, o código completo conta o número de vezes que o comando `sudo` foi 
 O `journalctl` é um utilitário de linha de comando no Linux usado para acessar e visualizar os registros do sistema coletados pelo sistema de log do systemd, conhecido como "journald". Ele permite ler e analisar os logs gerados pelo sistema operacional, incluindo mensagens do kernel, registros de inicialização, mensagens de serviços e aplicativos em execução, entre outros.
 
 # Crontab
+- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#6--crontab-)
