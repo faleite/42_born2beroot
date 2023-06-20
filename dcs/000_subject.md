@@ -5,22 +5,20 @@
 - [Tutorial 2](https://github.com/soraiathegirleffect/Born2BeRootGUIDE42lisboa)
 - [Debian iso](https://www.debian.org/download)
 
-## Guidelines
+# Guidelines
 - O uso do VirtualBox (ou UTM se você não puder usar o VirtualBox) é obrigatório.
 - Você só precisa entregar um arquivo signature.txt na raiz do seu repositório.
   - Você deve colar nele a assinatura do disco virtual da sua máquina.\
   Vá em Submissão e avaliação por pares para mais informações.
 
-## Mandatory part
+# Mandatory part
 
 *Este projeto consiste em você configurar seu primeiro servidor seguindo regras\
 específicas.*
 - Você deve escolher como sistema operacional a última versão estável do Debian\
 (sem testing/unstable) ou a última versão estável do Rocky. Debian é altamente\
 recomendado se você for novo na administração do sistema.
-- O **SELinux** deve estar em execução na inicialização e sua configuração\
-deve ser adaptada às necessidades do projeto. **AppArmor** para o Debian também\
-deve estar rodando na inicialização.
+- Para o Debian o **AppArmor** deve estar em execução na inicialização e sua configuração deve ser adaptada às necessidades do projeto.
 - Você deve criar pelo menos *2 partições* criptografadas usando **LVM**. Abaixo\
 está um exemplo do particionamento esperado:
 
@@ -78,11 +76,64 @@ devem ser restritos.
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 ```
 
-# Avaliação
+# Script de monitoramento
 
-### Perguntas
-- [Notas Filipa](./112_notas_filipa.pdf)
-- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-1-respostas-de-avalia%C3%A7%C3%A3o-)
+*Por fim, você deve criar um script simples chamado **monitoring.sh**.\
+Deve ser desenvolvido em bash.*
 
-### Comandos de avaliação
-- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-2-comandos-de-avalia%C3%A7%C3%A3o-%EF%B8%8F)
+*Na inicialização do servidor, o script exibirá algumas informações (listadas\
+abaixo) em todos os terminais a cada 10 minutos (dê uma olhada na **wall**).\
+O banner é opcional. Nenhum erro deve ser visível*
+
+*Seu script deve ser sempre capaz de exibir as seguintes informações:*
+
+- A arquitetura do seu sistema operacional e sua versão do kernel.
+- O número de processadores físicos.
+- O número de processadores virtuais.
+- A RAM atualmente disponível em seu servidor e sua taxa de utilização em\
+porcentagem.
+- A memória disponível no momento em seu servidor e sua taxa de utilização em\
+porcentgem.
+- A taxa de utilização atual de seus processadores como uma porcentagem.
+- A data e hora da última reinicialização.
+- Se o LVM está ativo ou não.
+- O número de conexões ativas.
+- O número de usuários que usam o servidor.
+- O endereço IPv4 do seu servidor e seu endereço MAC (Media  Access  Control)
+- O número de comandos executados com o programa sudo
+
+*Durante a defesa, você será solicitado a explicar como esse script funciona.\
+Você também terá que interrompê-lo sem modificá-lo.
+Dê uma olhada no **cron**.*
+
+*Este é um exemplo de como o script deve funcionar:*
+
+![image2.png](./image2.png)
+
+*Abaixo estão dois comandos que você pode usar para verificar alguns dos\
+requisitos do assunto:*
+
+*Para Debian:*
+
+![image3.png](./image3.png)
+
+# Lista de Bonus
+
+*Configure as partições corretamente para obter uma estrutura semelhante à\
+abaixo:*
+
+![image4.png](./image4.png)
+
+- Configure um site WordPress funcional com os seguintes serviços:\
+lighttpd, MariaDB, and PHP.
+- Configure um serviço de sua escolha sudo service --status-allque considere útil (NGINX / Apache2\
+excluido!). Durante a defesa, você terá que justificar sua escolha.
+
+*Para completar a parte bônus, você tem a possibilidade de configurar serviços\
+extras. Nesse caso, você pode abrir mais portas para atender às suas necessidades.\
+Obviamente, as regras do UFW/Firewalld devem ser adaptadas de acordo.*
+
+*A parte bônus só será avaliada se a parte obrigatória for PERFEITA. Perfeito\
+significa que a peça obrigatória foi executada integralmente e funciona sem\
+avarias. Se você não passou em TODOS os requisitos obrigatórios, sua parte de\
+bônus não será avaliada.*
