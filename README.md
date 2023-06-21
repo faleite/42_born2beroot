@@ -16,7 +16,7 @@ BORN2BERROT | [Network & system administration] [Rigor] | [![faaraujo's 42 Born2
 <!-- [<img align="center" src="./dcs/map.png" width="100%"/>](https://faleite.github.io/born2beroot) -->
 
 # Índice
-## [Especificações do projeto](https://github.com/faleite/42born2beroot/blob/main/dcs/000_subject.md)
+### [Especificações do projeto](https://github.com/faleite/42born2beroot/blob/main/dcs/000_subject.md)
 
 ## Artigos
 1. [Virtual Machine](https://github.com/faleite/42born2beroot/blob/main/dcs/100_vm.md)
