@@ -1,4 +1,4 @@
-# wall - write wall
+# wall - write all
 
 O comando "wall" no Linux é usado para enviar mensagens para todos os usuários conectados em um determinado momento. "Wall" significa "write all" (escrever para todos). Quando você executa o comando "wall" seguido de uma mensagem, essa mensagem é exibida como um aviso ou notificação na tela de todos os usuários conectados ao sistema.
 
