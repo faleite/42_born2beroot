@@ -1,18 +1,7 @@
 # Avaliação
 
-### Signature.txt
-- Obter a assinatura: 
-  1. `cd /nfs/homes/username/sgoinfre/vm_name`
-  2. `shasum Born2beroot.vdi`
-  3. Pegue a assinatura adicione ao ficheiro **signature.txt**, envie para o reporitorio no intra.
 
-*shasum -> Comando para identificar a integridade de um ficheiro através da soma de verificação do hash SHA-1 de um ficheiro.*
-
-### Perguntas
-- [Notas Filipa](./112_notas_filipa.pdf)
-- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-1-respostas-de-avalia%C3%A7%C3%A3o-)
-
-### Comandos de avaliação
+## Comandos de avaliação
 - Verificar se não há nenhuma **interface gráfica**:
 
 `ls /usr/bin/*session` (Deve obter o resultado: `/usr/bin/dbus-run-session`)
@@ -96,4 +85,15 @@
 
 `sudo /etc/init.d/cron start`
 
-[Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-2-comandos-de-avalia%C3%A7%C3%A3o-%EF%B8%8F)
+### [Tutorial detalhado](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-2-comandos-de-avalia%C3%A7%C3%A3o-%EF%B8%8F)
+## Perguntas
+- [Notas Filipa](./112_notas_filipa.pdf)
+- [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-1-respostas-de-avalia%C3%A7%C3%A3o-)
+
+## Signature.txt
+- Obter a assinatura: 
+  1. `cd /nfs/homes/username/sgoinfre/vm_name`
+  2. `shasum Born2beroot.vdi`
+  3. Pegue a assinatura adicione ao ficheiro **signature.txt**, envie para o reporitorio no intra.
+
+*shasum -> Comando para identificar a integridade de um ficheiro através da soma de verificação do hash SHA-1 de um ficheiro.*
