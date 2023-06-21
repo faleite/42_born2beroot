@@ -1,8 +1,10 @@
 # Born2beRoot
 
-**Este projeto visa criar uma máquina virtual em VirtualBox sob instruções específicas.**
+**Este projeto visa criar uma máquina virtual em VirtualBox\
+sob instruções específicas.**
 
-*Portanto, ao final deste projeto, você poderá configurar seu próprio sistema operacional enquanto implementa regras estritas.*
+*Ao final deste projeto, você poderá configurar seu próprio sistema operacional\
+enquanto implementa regras estritas.*
 
 [![faaraujo's 42 stats](https://badge42.vercel.app/api/v2/clgrr2va0002108jo3cc5foww/stats?cursusId=21&coalitionId=112)](https://github.com/JaeSeoKim/badge42)
 
@@ -14,7 +16,7 @@ BORN2BERROT | [Network & system administration] [Rigor] | [![faaraujo's 42 Born2
 <!-- [<img align="center" src="./dcs/map.png" width="100%"/>](https://faleite.github.io/born2beroot) -->
 
 # Índice
-## [O projeto](https://github.com/faleite/42born2beroot/blob/main/dcs/000_subject.md)
+## [Especificações do projeto](https://github.com/faleite/42born2beroot/blob/main/dcs/000_subject.md)
 
 ## Artigos
 1. [Virtual Machine](https://github.com/faleite/42born2beroot/blob/main/dcs/100_vm.md)
