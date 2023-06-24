@@ -1,6 +1,6 @@
 # Born2beRoot
 
-[<img align="left" src="./dcs/image7.png" width="10%"/>](https://faleite.github.io/born2beroot)
+[<img align="left" src="./dcs/image7.png" width="15%"/>](https://faleite.github.io/born2beroot)
 
 **Este projeto visa criar uma máquina virtual em\
 VirtualBox sob instruções específicas.**
