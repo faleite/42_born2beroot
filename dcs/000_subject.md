@@ -2,8 +2,7 @@
 
 ## Links
 - [Tutorial 1](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md)
-- [Tutorial 2](https://github.com/soraiathegirleffect/Born2BeRootGUIDE42lisboa)
-- [Debian iso](https://www.debian.org/download)
+- [Debian ISO](https://www.debian.org/download)
 
 # Guidelines
 - O uso do VirtualBox (ou UTM se você não puder usar o VirtualBox) é obrigatório.

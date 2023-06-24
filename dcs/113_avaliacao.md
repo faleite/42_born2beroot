@@ -44,6 +44,12 @@
 - Ver se o **nome do anfitrião** foi alterado correctamente:
 
 `hostname`
+- Ver **informações** relacionadas ao envelhecimento da **conta de usuário** especificado.
+
+`sudo chage -l user_name`
+- **Trocar senha** de um usuário:
+
+`sudo passwd user_name`
 - Verificar se todas as **partições**  estão como indicado no subject:
 
 `lsblk`
@@ -87,7 +93,7 @@
 
 ### [Tutorial detalhado](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-2-comandos-de-avalia%C3%A7%C3%A3o-%EF%B8%8F)
 ## Perguntas
-- [Notas Filipa](./112_notas_filipa.pdf)
+- [Notas Filipa](./112_notas_filipa.pdf) ([your profile](https://profile.intra.42.fr/users/aalves-r))
 - [Tutorial](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_POR.md#9-1-respostas-de-avalia%C3%A7%C3%A3o-)
 
 ## Signature.txt
