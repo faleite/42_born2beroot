@@ -10,9 +10,9 @@ sistema operacional enquanto implementa regras estritas.*
 <br>
 <br>
 
-Project | Skills | Grade |
-:------:|:------:|:-----:|
-BORN2BERROT | [Network & system administration] [Rigor] | [![faaraujo's 42 Born2beroot Score](https://badge42.vercel.app/api/v2/clgrr2va0002108jo3cc5foww/project/3116292)](https://github.com/JaeSeoKim/badge42)
+ Skills | Grade |
+:------:|:-----:|
+[Network & system administration] [Rigor] | [![faaraujo's 42 Born2beroot Score](https://badge42.vercel.app/api/v2/clgrr2va0002108jo3cc5foww/project/3116292)](https://github.com/JaeSeoKim/badge42)
 
 [![faaraujo's 42 stats](https://badge42.vercel.app/api/v2/clgrr2va0002108jo3cc5foww/stats?cursusId=21&coalitionId=112)](https://github.com/JaeSeoKim/badge42)
 <!-- ### *Access to the [interactive map](https://faleite.github.io/born2beroot).* -->
